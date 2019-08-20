@@ -14,8 +14,6 @@ public interface UserServicesDaoi {
 
 	boolean removeUser(int userId);
 
-//	boolean updateUser(User user);
-
 	User validateUser(String username, String password);
 
 	User getUserByUsername(String username);

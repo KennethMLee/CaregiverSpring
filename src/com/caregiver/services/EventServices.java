@@ -44,7 +44,17 @@ public class EventServices implements EventServicesDaoi{
 		entityManagerFactory.close();
 		return eventList;
 	}
-
+	
+	@Override
+	public List<Event> getEventByUsername(String username){
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("CaregiverSpring");
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		Query query = entityManager.createQuery("Select e."+username+" from Event");
+		List<Event> eventList = query.getResultList();
+		entityManager.close();
+		entityManagerFactory.close();
+		return eventList;
+	}
 //	@Override
 //	public boolean removeEvent(int eventId) {
 //		boolean result = true;

@@ -10,6 +10,8 @@ public interface EventServicesDaoi {
 
 	List<Event> getAllEvents();
 
+	List<Event> getEventByUsername(String username);
+
 //	boolean removeEvent(int eventId);
 //
 //	boolean updateEvent(Event event);
