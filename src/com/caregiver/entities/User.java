@@ -119,64 +119,7 @@ public class User {
 		this.childProfile = childProfile;
 	}
 
-//	@Override
-//	public int hashCode() {
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + ((accountType == null) ? 0 : accountType.hashCode());
-//		result = prime * result + ((childNameAlias == null) ? 0 : childNameAlias.hashCode());
-//		result = prime * result + ((childProfile == null) ? 0 : childProfile.hashCode());
-//		result = prime * result + ((email == null) ? 0 : email.hashCode());
-//		result = prime * result + ((password == null) ? 0 : password.hashCode());
-//		result = prime * result + userId;
-//		result = prime * result + ((username == null) ? 0 : username.hashCode());
-//		return result;
-//	}
-//
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj == null)
-//			return false;
-//		if (getClass() != obj.getClass())
-//			return false;
-//		User other = (User) obj;
-//		if (accountType == null) {
-//			if (other.accountType != null)
-//				return false;
-//		} else if (!accountType.equals(other.accountType))
-//			return false;
-//		if (childNameAlias == null) {
-//			if (other.childNameAlias != null)
-//				return false;
-//		} else if (!childNameAlias.equals(other.childNameAlias))
-//			return false;
-//		if (childProfile == null) {
-//			if (other.childProfile != null)
-//				return false;
-//		} else if (!childProfile.equals(other.childProfile))
-//			return false;
-//		if (email == null) {
-//			if (other.email != null)
-//				return false;
-//		} else if (!email.equals(other.email))
-//			return false;
-//		if (password == null) {
-//			if (other.password != null)
-//				return false;
-//		} else if (!password.equals(other.password))
-//			return false;
-//		if (userId != other.userId)
-//			return false;
-//		if (username == null) {
-//			if (other.username != null)
-//				return false;
-//		} else if (!username.equals(other.username))
-//			return false;
-//		return true;
-//	}
-//
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", email=" + email + ", username=" + username + ", password=" + password

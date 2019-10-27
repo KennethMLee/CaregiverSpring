@@ -42,13 +42,11 @@
 	<!-- Header -->
 	<header id="header">
 		<h1>
-			<a href="HomePage">Caregiver</a>
+			<a href="${pageContext.request.contextPath}/HomePage">Caregiver</a>
 		</h1>
 		<nav id="nav">
 			<ul>
-				<li><a href="HomePage">Home</a></li>
-				<li><a href="LogInPage">Login</a></li>
-				<li><a href="RegistrationPage">Register</a></li>
+				<li><a href="${pageContext.request.contextPath}/HomePage">Home</a></li>
 				<li><a href="EventsPage">Events</a></li>
 				<li><a href="#">Logout</a></li>
 			</ul>
@@ -56,25 +54,80 @@
 	</header>
 
 	<!-- Main -->
-	<section id="main" class="wrapper">
-		<div class="container">
 
-			<header class="major">
-				<h1>Record Event</h1>
+<!-- Start of Modal -->
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h4 class="modal-title text-xs-center">Update Baby Event</h4>
+		</div>
+		<div class="modal-body">
+			<form role="form"			
+				action="${pageContext.request.contextPath}/updateEventForm/${event.eventId}" 
+				method="POST">
+				<input type="hidden" name="_token" value="">
 
-				<p>Enter the event you want to log.</p>
+				<div class="form-group">
+					<label class="control-label">Id:</label>
+					<div>
+						<input type="text" class="form-control input-lg" name="eventId"
+							placeholder="${event.eventId}" value="${event.eventId}" readonly />
+					</div>
+					
+				<div class="form-group">
+					<label class="control-label">username</label>
+					<div>
+						<input type="text" class="form-control input-lg" name="username"
+							placeholder="${event.username}" value="${event.username}" readonly />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label">accountType</label>
+					<div>
+						<input type="text" class="form-control input-lg" name="accountType"
+							placeholder="${event.accountType}" value="${event.accountType}" readonly />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label">date:</label>
+					<div>
+						<input type="text" class="form-control input-lg" name="date"
+							placeholder="${event.date}" value="${event.date}" />
+					</div>				
+					</div>
+
+				<div class="form-group">
+					<label class="control-label">time:</label>
+					<div>
+						<input type="text" class="form-control input-lg"
+							name="time" placeholder="${event.time}"
+							value="${event.time}" />
+					</div>
+				</div>
 				
-				<div align="left">
-				<form:form action="addEvent" method="POST" modelAttribute="userKey">
-					
-					<label for="date">Date</label> <!-- User input -->
-					<input type="text" id="date" name="date" /> 
-					
-					<label for="time">Time</label> <!-- User input -->
-					<input type="text" id="time" name="time" /> 
-					
-					<p>Select Baby Event</p>
+								<div class="form-group">
+					<label class="control-label">primaryCaregiverUsername:</label>
+					<div>
+						<input type="text" class="form-control input-lg"
+							name="primaryCaregiverUsername" placeholder="${event.primaryCaregiverUsername}"
+							value="${event.primaryCaregiverUsername}" readonly />
+					</div>
+				</div>
+				
+				
+								<div class="form-group">
+					<label class="control-label">childNameAlias:</label>
+					<div>
+						<input type="text" class="form-control input-lg"
+							name="childNameAlias" placeholder="${event.childNameAlias}"
+							value="${event.childNameAlias}" readonly />
+					</div>
+				</div>
+				
+								<div class="form-group">
+					<label class="control-label">Baby Event:</label>		
                     <select name="event">
+                    	<option value="${event.event}">"${event.event}"</option>
 	                     <option value="Nursing Right">Nursing Right</option>
 	                     <option value="Nursing Left">Nursing Left</option>
 	                     <option value="Bottle Fed">Bottle Fed</option>
@@ -82,39 +135,27 @@
 	                     <option value="Wet Diaper">Wet Diaper</option>
 	                     <option value="Dirty Diaper">Dirty Diaper</option>
                     </select><br><br>
-					
-					<input type="submit" value="Submit">
-				</form:form>
-			</div>
+                    
+                    
+					</div>
+				</div>
+				
+				
+				<div class="modal-footer text-lg-center">
+						<div>
+							<button id="register-btn-click" type="submit"
+								class="btn btn-info btn-block btn-lg">Update Event</button>
+						</div>
+				</div>
 
-				<h1>Events</h1>
-				</h2>
-				<p>Here are the events that have been tracked.</p>
-			</header>
-			
-			
-		
-		<br><br><br><br>
-		
-			<c:forEach var="event" items="${eventList}">
-			<p>${event.getDate()}</p>
-			<p>${event.getTime()}</p>
-			<p>${event.getUsername()}</p>
-			<p>${event.getChildNameAlias()}</p>
-			<p>${event.getEvent()}</p>
-				<hr>
-			</c:forEach>
-
-			<br><br>
-
-			</table>
-			</p>
-
+			</form>
 		</div>
-		</p>
 
-		</div>
-	</section>
+	</div>
+	<!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+<!-- /.modal -->
 
 	<!-- Footer -->
 	<footer id="footer">
@@ -123,7 +164,12 @@
 				<section class="4u 6u(medium) 12u$(small)">
 					<h3>About Caregiver</h3>
 					<p>Tracking your child's growth and development.</p>
-					
+					<!--<ul class="alt">
+								<li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+								<li><a href="#">Quod adipisci perferendis et itaque.</a></li>
+								<li><a href="#">Itaque eveniet ullam, veritatis reiciendis?</a></li>
+								<li><a href="#">Accusantium repellat accusamus a, soluta.</a></li>
+							</ul>-->
 				</section>
 				<section class="4u 6u$(medium) 12u$(small)">
 					<h3>Nostrum, repellat!</h3>

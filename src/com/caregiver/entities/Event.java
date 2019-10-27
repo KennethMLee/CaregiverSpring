@@ -136,6 +136,19 @@ public class Event {
 		this.event = event;
 	}
 
+	public Event(int id, String username, String accountType, String date, String time,
+			String primaryCaregiverUsername, String childNameAlias, String event) {
+		super();
+		this.eventId = id;
+		this.username = username;
+		this.accountType = accountType;
+		this.date = date;
+		this.time = time;
+		this.primaryCaregiverUsername = primaryCaregiverUsername;
+		this.childNameAlias = childNameAlias;
+		this.event = event;
+	}
+
 	
 	
 }

@@ -6,6 +6,8 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 
   <display-name>CaregiverSpring</display-name>
   <servlet>
+  	<!-- Front Controller/ Dispatcher Servlet, will take requests from the client
+  	and look for the controller through annotations-->
     <servlet-name>CaregiverController</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <load-on-startup>1</load-on-startup>

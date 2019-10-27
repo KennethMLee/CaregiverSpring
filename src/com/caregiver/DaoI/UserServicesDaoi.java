@@ -19,5 +19,4 @@ public interface UserServicesDaoi {
 	User getUserByUsername(String username);
 
 	boolean isUser(String username, String password);
-
 }

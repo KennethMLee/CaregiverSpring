@@ -12,8 +12,4 @@ import com.caregiver.services.UserServices;
 @Controller
 public class LoginController {
 
-	
-
-	
-
 }

@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
 <meta charset="ISO-8859-1">
 <meta charset="UTF-8">
-<title>Generic - Interphase by TEMPLATED</title>
+<title>Caregiver</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -18,24 +20,35 @@
 
 <link rel="stylesheet" href="<c:url value="/resources/css/skel.css" />" />
 <link rel="stylesheet" href="<c:url value="/resources/css/style.css" />" />
-<link rel="stylesheet" href="<c:url value="/resources/css/style-xlarge.css" />" />
+<link rel="stylesheet"
+	href="<c:url value="/resources/css/style-xlarge.css" />" />
 
 <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<script src="resources/script/table.js"></script>
 </head>
 <body>
-
 	<!-- Header -->
 	<header id="header">
 		<h1>
-			<a href="HomePage">Caregiver</a>
+			<a href="${pageContext.request.contextPath}/HomePage">Caregiver</a>
 		</h1>
 		<nav id="nav">
 			<ul>
 				<li><a href="HomePage">Home</a></li>
-				<li><a href="LogInPage">Login</a></li>
-				<li><a href="RegistrationPage">Register</a></li>
-				<!--<li><a href="EventsPage">Events</a></li>
-				<li><a href="#">Logout</a></li> -->
+				<li><a href="EventsPage">Add Events</a></li>
+				<li><a href="#">Logout</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -44,32 +57,46 @@
 	<section id="main" class="wrapper">
 		<div class="container">
 
-			<header class="major">
-				<h2>Login</h2>
-				<p>Login to your account</p>
-			</header>
+				<h1>Events</h1>
+				<p>Here are the events that have been tracked.</p>
+			
+		<br><br>
+		
+							<table class="table table-striped table-hover table-bordered">
 
-			<!-- FORM LOGIN -->
-			<div>
-				<form action="LogIn" method="post">
-					<label for="username">Enter your username</label> 
-					<input type="text" id="fname" name="username"> 
-					
-					<label for="password">Enter your password</label> 
-					<input type="text" id="lname" name="password"> 
-					
-					<input type="submit" value="Submit">
-				</form>
-			</div>
-			</p>
+						<tr>
+							<th>Date</th>
+							<th>Time</th>
 
-			<p>
-				<a href="#">Forgot your username?</a><br> <a href="#">Forgot
-					your password?</a>
+							<th>User</th>
+							<th>Child</th>
+							<th>Event</th>
+							<th>Update</th>
+							<th>Delete</th>
+						</tr>
+
+				<c:forEach var="event" items="${eventList}">
+							<tr>
+								<td>${event.getDate()}</td>
+								<td>${event.getTime()}</td>
+ 								<td>${event.getUsername()}</td>
+								<td>${event.getChildNameAlias()}</td>
+								<td>${event.getEvent()}</td>
+								<!-- display the update link -->
+								<td><a
+									href="${pageContext.request.contextPath}/updateEvent/${event.eventId}">Update</a></td>
+
+								<!-- display the Delete link -->
+								<td><a
+									href="${pageContext.request.contextPath}/removeEvent/${event.eventId}">Delete</a></td>
+							</tr>
+						</c:forEach>					
+					</table>
+			<br><br>
+			</table>
 			</p>
 		</div>
 		</p>
-
 		</div>
 	</section>
 
@@ -79,7 +106,7 @@
 			<div class="row">
 				<section class="4u 6u(medium) 12u$(small)">
 					<h3>About Caregiver</h3>
-					<p>Track and monitor your baby's activity</p>
+					<p>Tracking your child's growth and development.</p>
 					<!--<ul class="alt">
 								<li><a href="#">Lorem ipsum dolor sit amet.</a></li>
 								<li><a href="#">Quod adipisci perferendis et itaque.</a></li>
